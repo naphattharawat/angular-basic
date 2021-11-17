@@ -1,0 +1,20 @@
+<clr-datagrid>
+    <clr-dg-column [clrDgField]="'name'">ชื่อ</clr-dg-column>
+    <clr-dg-column [clrDgField]="'gender'">เพศ</clr-dg-column>
+    <clr-dg-column [clrDgField]="'date'">วันเกิด</clr-dg-column>
+    <clr-dg-column [clrDgField]="'address'">ที่อยู่</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let item of list">
+        <clr-dg-cell>{{item.first_name}}</clr-dg-cell>
+        <clr-dg-cell>{{item.last_name}}</clr-dg-cell>
+        <clr-dg-cell>{{item.date}}</clr-dg-cell>
+        <clr-dg-cell>{{item.address}}</clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>
+        <clr-dg-pagination #pagination [clrDgPageSize]="3">
+          <clr-dg-page-size [clrPageSizeOptions]="[3,10,20,50,100]">Users per page</clr-dg-page-size>
+          {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} users
+        </clr-dg-pagination>
+      </clr-dg-footer>
+</clr-datagrid>
