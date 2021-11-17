@@ -1,3 +1,4 @@
+import { AdminModule } from './admin/admin.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -8,6 +9,7 @@ import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthModule } from './auth/auth.module';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -20,9 +22,11 @@ import { AuthModule } from './auth/auth.module';
     ClarityModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    // AuthModule
+    AdminModule
   ],
-  providers: [],
+  providers: [
+    { provide: 'API_URL', useValue: environment.apiUrl },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

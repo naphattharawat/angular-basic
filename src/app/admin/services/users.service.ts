@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 @Injectable({
   providedIn: 'root'
@@ -6,11 +6,12 @@ import { HttpClient } from "@angular/common/http";
 export class UsersService {
 
   constructor(
-    private httpClient: HttpClient
+    @Inject('API_URL') private apiUrl: string,
+    private httpClient: HttpClient,
   ) { }
 
   async getUser() {
-    const url = 'http://localhost:3000/users';
+    const url = `${this.apiUrl}/users`;
     return await this.httpClient.get(url).toPromise()
   }
 

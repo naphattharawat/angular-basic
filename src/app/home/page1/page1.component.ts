@@ -16,22 +16,6 @@ export class Page1Component implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getList();
-  }
-
-  async getList(){
-    try {
-        const rs:any = await this.usersService.getUser();
-        if(rs.ok){
-          this.list = rs.rows;
-        } else{
-          console.log(rs.error);
-          
-        }
-    } catch (error) {
-      console.log(error);
-      
-    }
   }
 
 
