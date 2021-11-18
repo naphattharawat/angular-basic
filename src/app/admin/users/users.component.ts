@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertService } from 'src/app/alert.service';
+import { TitlesService } from '../services/titles.service';
 import { UsersService } from '../services/users.service';
 
 
@@ -11,6 +12,8 @@ import { UsersService } from '../services/users.service';
 export class UsersComponent implements OnInit {
 
   list = [];
+  titleNameList: any = [];
+  titleId!: number;
   name!: string;
   lname: any;
   username!: string;
@@ -20,11 +23,13 @@ export class UsersComponent implements OnInit {
   isUpdate = false;
   constructor(
     private usersService: UsersService,
+    private titlesService: TitlesService,
     private alertService: AlertService
   ) { }
 
   ngOnInit(): void {
     this.getList();
+    this.getitleNameTList();
   }
 
   async getList() {
@@ -39,22 +44,38 @@ export class UsersComponent implements OnInit {
       console.log(error);
     }
   }
+  async getitleNameTList() {
+    try {
+      const rs: any = await this.titlesService.getTitleName();
+      if (rs.ok) {
+        this.titleNameList = rs.rows;
+      } else {
+        console.log(rs.error);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   onClickEdit(i: any) {
     this.isUpdate = true;
     this.name = i.first_name;
     this.lname = i.last_name;
+    this.username = i.username;
+    this.titleId = i.title_id;
     this.id = i.id;
     this.modalEditUser = true;
   }
 
   async onClickSave() {
     try {
+      console.log(this.titleId);
+      
       const json: any = {
         "first_name": this.name,
         "last_name": this.lname,
         "username": this.username,
-        "title_id": 2,
+        "title_id": this.titleId,
         "password": this.password
       }
       if (this.isUpdate) {
@@ -102,6 +123,7 @@ export class UsersComponent implements OnInit {
     this.lname = '';
     this.username = '';
     this.password = '';
+    this.titleId = this.titleNameList[0].id;
     this.modalEditUser = true;
   }
 }

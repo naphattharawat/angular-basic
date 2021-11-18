@@ -1,12 +1,13 @@
-
 <button class="btn btn-success" (click)="onClickAdd()">เพิ่ม</button>
 
 <clr-datagrid>
+  <clr-dg-column>คำนำหน้า</clr-dg-column>
   <clr-dg-column>ชื่อ</clr-dg-column>
   <clr-dg-column>นามสกุล</clr-dg-column>
   <clr-dg-column>username</clr-dg-column>
   <clr-dg-column></clr-dg-column>
   <clr-dg-row *clrDgItems="let i of list">
+    <clr-dg-cell>{{i.title_name}}</clr-dg-cell>
     <clr-dg-cell>{{i.first_name}}</clr-dg-cell>
     <clr-dg-cell>{{i.last_name}}</clr-dg-cell>
     <clr-dg-cell>{{i.username}}</clr-dg-cell>
@@ -29,12 +30,54 @@
 </clr-datagrid>
 
 <clr-modal [(clrModalOpen)]="modalEditUser">
-  <h3 class="modal-title">Title</h3>
+  <h3 class="modal-title">รายละเอียด</h3>
   <div class="modal-body">
-    ชื่อ<input type="text" [(ngModel)]="name"> <br>
-    นามสกุล<input type="text" [(ngModel)]="lname"> <br>
-    username<input type="text" [(ngModel)]="username"> <br>
-    password<input type="text" [(ngModel)]="password"> <br>
+    <form class="clr-form clr-form-horizontal">
+      <div class="clr-form-control">
+        <label for="example2" class="clr-control-label">คำนำหน้า</label>
+        <div class="clr-control-container">
+          <div class="clr-select-wrapper">
+            <select [(ngModel)]="titleId" name="titleId">
+              <option *ngFor="let item of titleNameList" [value]="item.id">{{item.name}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="clr-form-control">
+        <label for="name" class="clr-control-label">ชื่อ</label>
+        <div class="clr-control-container">
+          <div class="clr-input-wrapper">
+            <input type="text" name="name" id="name" placeholder="ชื่อ" [(ngModel)]="name" class="clr-input" />
+          </div>
+        </div>
+      </div>
+      <div class="clr-form-control">
+        <label for="lname" class="clr-control-label">นามสกุล</label>
+        <div class="clr-control-container">
+          <div class="clr-input-wrapper">
+            <input type="text" name="lname" id="lname" placeholder="นามสกุล" [(ngModel)]="lname" class="clr-input" />
+          </div>
+        </div>
+      </div>
+      <div class="clr-form-control">
+        <label for="username" class="clr-control-label">username</label>
+        <div class="clr-control-container">
+          <div class="clr-input-wrapper">
+            <input type="text" name="username" id="username" placeholder="username" [(ngModel)]="username" class="clr-input" />
+          </div>
+        </div>
+      </div>
+      <div class="clr-form-control" *ngIf="!isUpdate">
+        <label for="password" class="clr-control-label">password</label>
+        <div class="clr-control-container">
+          <div class="clr-input-wrapper">
+            <input type="text" name="password" id="password" placeholder="password" [(ngModel)]="password" class="clr-input" />
+          </div>
+        </div>
+      </div>
+    </form>
+
+
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline" (click)="modalEditUser = false">Cancel</button>

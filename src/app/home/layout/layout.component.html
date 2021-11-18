@@ -22,16 +22,12 @@
     </div>
   </header>
   <div class="content-container">
-    <nav class="sidenav">
-      <section class="sidenav-content">
-        <a [routerLink]="['/page1']" routerLinkActive="router-link-active" class="nav-link active">
-          หน้าแรก
-        </a>
-        <a [routerLink]="['/page2']" routerLinkActive="router-link-active" class="nav-link">
-          หน้าสอง
-        </a>
-      </section>
-    </nav>
+
+    <clr-vertical-nav>
+      <a clrVerticalNavLink routerLink="./page1" routerLinkActive="active">หน้าแรก</a>
+      <a clrVerticalNavLink routerLink="./page2" routerLinkActive="active">หน้าสอง</a>
+    </clr-vertical-nav>
+
     <div class="content-area">
       <router-outlet></router-outlet>
     </div>
