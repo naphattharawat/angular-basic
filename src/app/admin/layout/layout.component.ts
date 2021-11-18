@@ -12,4 +12,7 @@ export class LayoutComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  logout(){
+    sessionStorage.removeItem('token');
+  }
 }

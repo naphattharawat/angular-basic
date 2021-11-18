@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { LayoutComponent } from './layout/layout.component';
 import { ClarityModule } from '@clr/angular';
 import { HttpClientModule } from '@angular/common/http';
+import { NgChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeRoutingModule,
     FormsModule,
     ClarityModule,
-    HttpClientModule
+    HttpClientModule,
+    NgChartsModule
   ]
 })
 export class HomeModule { }

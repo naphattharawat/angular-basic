@@ -15,7 +15,7 @@
         </a> -->
       </div>
       <div class="header-actions">
-        <a [routerLink]="['/']" routerLinkActive="router-link-active"  class="nav-link nav-text">
+        <a [routerLink]="['/']" (click)="logout()" routerLinkActive="router-link-active"  class="nav-link nav-text">
           <span>ออกจากระบบ</span>
           <!-- <clr-icon shape="cog"></clr-icon> -->
         </a>

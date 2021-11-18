@@ -10,7 +10,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthModule } from './auth/auth.module';
 import { environment } from 'src/environments/environment';
-
+import { LoginModule } from './login/login.module';
+import { NgChartsModule } from 'ng2-charts';
 @NgModule({
   declarations: [
     AppComponent
@@ -22,7 +23,9 @@ import { environment } from 'src/environments/environment';
     ClarityModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    AdminModule
+    AdminModule,
+    LoginModule,
+    NgChartsModule
   ],
   providers: [
     { provide: 'API_URL', useValue: environment.apiUrl },

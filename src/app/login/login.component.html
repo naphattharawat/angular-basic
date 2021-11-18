@@ -1,0 +1,40 @@
+<div class="centerScreen">
+  <div class="card centerDiv">
+    <div class="card-header">
+      LOGIN
+    </div>
+    <div class="card-block">
+      <div class="card-text">
+        <form class="clr-form clr-form-horizontal">
+          <div class="clr-form-control">
+            <label for="username" class="clr-control-label">username</label>
+            <div class="clr-control-container">
+              <div class="clr-input-wrapper">
+                <input type="text" name="username" id="username" placeholder="username" [(ngModel)]="username"
+                  class="clr-input" />
+              </div>
+            </div>
+          </div>
+          <div class="clr-form-control">
+            <label for="password" class="clr-control-label">password</label>
+            <div class="clr-control-container">
+              <div class="clr-input-wrapper">
+                <input type="text" name="password" id="password" placeholder="password" [(ngModel)]="password"
+                  class="clr-input" />
+                
+
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class="errorMessage" [hidden]="!isError">
+            {{errorMessage}}
+          </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-sm btn-success" (click)="doLogin()">Login</button>
+      <button class="btn btn-sm btn-danger" [routerLink]="['/']" routerLinkActive="router-link-active">ออก</button>
+    </div>
+  </div>
+</div>
